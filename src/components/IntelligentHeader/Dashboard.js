@@ -308,6 +308,13 @@ class Dashboard extends React.Component {
               type: "time",
             },
           ],
+          yAxes: [
+            {
+              ticks: {
+                precision: 0
+              }
+            }
+          ]
         },
         animation: {
           duration: 0,
