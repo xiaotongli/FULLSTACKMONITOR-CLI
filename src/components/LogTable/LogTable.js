@@ -17,7 +17,7 @@ export default function LogTable({
   logTypes,
 }) {
   const messengerBlue = useToken('colors', 'messenger.400');
-  const TIMEDIFF_THRESHOLD = 1000;
+  const TIMEDIFF_THRESHOLD = 500;
   // Assign titles dynamically depending on which types of logs the user is viewing
   const [colTitle1, colTitle2, colTitle3, colTitle4] = getHeaderTitles(
     logTypes
@@ -44,7 +44,7 @@ export default function LogTable({
   return (
     <div>
       {showLogs && (
-      <Table colorScheme="facebook" variant="simple">
+      <Table variant="simple">
         <Thead>
           <Tr className="sticky-table">
             <Th>{colTitle1}</Th>
@@ -54,7 +54,6 @@ export default function LogTable({
           </Tr>
         </Thead>
         <Tbody>
-
           {logs.map((log, i) => {
             let styleObj = {};
             if (showMoreLogInfo && activeLog.id === log.id) {
@@ -71,18 +70,18 @@ export default function LogTable({
                     <LogMotion
                       styleObj={styleObj}
                       variants={{
-                        initialHidden: (i) => ({
+                        initialHidden: () => ({
                           opacity: 0,
                           y: -50 * i,
                         }),
-                        initialVisible: (i) => ({
+                        initialVisible: () => ({
                           opacity: 1,
                           y: 0,
                           transition: {
                             delay: 0.025 * i,
                           },
                         }),
-                        loadedHidden: (i) => {
+                        loadedHidden: () => {
                           const timeDiff = Date.parse(new Date().toISOString())
                           - Date.parse(
                             new Date(
@@ -98,7 +97,7 @@ export default function LogTable({
                             opacity: 1,
                           };
                         },
-                        loadedVisible: (i) => {
+                        loadedVisible: () => {
                           const timeDiff = Date.parse(new Date().toISOString())
                           - Date.parse(
                             new Date(
@@ -137,18 +136,18 @@ export default function LogTable({
                     <RequestMotion
                       styleObj={styleObj}
                       variants={{
-                        initialHidden: (i) => ({
+                        initialHidden: () => ({
                           opacity: 0,
                           y: -50 * i,
                         }),
-                        initialVisible: (i) => ({
+                        initialVisible: () => ({
                           opacity: 1,
                           y: 0,
                           transition: {
                             delay: i * 0.025,
                           },
                         }),
-                        loadedHidden: (i) => {
+                        loadedHidden: () => {
                           const timeDiff = Date.parse(new Date().toISOString())
                           - Date.parse(
                             new Date(
@@ -164,7 +163,7 @@ export default function LogTable({
                             opacity: 1,
                           };
                         },
-                        loadedVisible: (i) => {
+                        loadedVisible: () => {
                           const timeDiff = Date.parse(new Date().toISOString())
                           - Date.parse(
                             new Date(
@@ -204,18 +203,18 @@ export default function LogTable({
                       styleObj={styleObj}
                       response={log}
                       variants={{
-                        initialHidden: (i) => ({
+                        initialHidden: () => ({
                           opacity: 0,
                           y: -50 * i,
                         }),
-                        initialVisible: (i) => ({
+                        initialVisible: () => ({
                           opacity: 1,
                           y: 0,
                           transition: {
                             delay: i * 0.025,
                           },
                         }),
-                        loadedHidden: (i) => {
+                        loadedHidden: () => {
                           const timeDiff = Date.parse(new Date().toISOString())
                           - Date.parse(
                             new Date(
@@ -231,7 +230,7 @@ export default function LogTable({
                             opacity: 1,
                           };
                         },
-                        loadedVisible: (i) => {
+                        loadedVisible: () => {
                           const timeDiff = Date.parse(new Date().toISOString())
                           - Date.parse(
                             new Date(
